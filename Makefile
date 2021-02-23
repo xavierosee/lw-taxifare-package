@@ -11,7 +11,7 @@ black:
 	@black scripts/* TaxiFareModel/*.py
 
 test:
-	@coverage run -m pytest tests/*_tests.py
+	@coverage run -m pytest tests/*_test.py
 	@coverage report -m --omit="${VIRTUAL_ENV}/lib/python*"
 
 ftest:
