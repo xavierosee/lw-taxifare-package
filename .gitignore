@@ -6,3 +6,5 @@ raw_data/
 **/__pycache__/
 .env
 mlruns/
+.vscode/
+.pytest_cache/
