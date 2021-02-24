@@ -69,6 +69,12 @@ REGION=europe-west1
 LOCAL_PATH="raw_data/train_1k.csv"
 BUCKET_FOLDER=data
 BUCKET_FILE_NAME=$(shell basename ${LOCAL_PATH})
+PACKAGE_NAME=TaxiFareModel
+FILENAME=trainer
+PYTHON_VERSION=3.7
+FRAMEWORK=scikit-learn
+RUNTIME_VERSION=1.15
+JOB_NAME=taxi_fare_training_pipeline_$(shell date +'%Y%m%d_%H%M%S')
 
 
 set_project:
@@ -79,3 +85,13 @@ create_bucket:
 
 upload_data:
 	@gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
+
+
+gcp_submit_training:
+	gcloud ai-platform jobs submit training ${JOB_NAME} \
+		--job-dir gs://${BUCKET_NAME}/${BUCKET_TRAINING_FOLDER} \
+		--package-path ${PACKAGE_NAME} \
+		--module-name ${PACKAGE_NAME}.${FILENAME} \
+		--python-version=${PYTHON_VERSION} \
+		--runtime-version=${RUNTIME_VERSION} \
+		--region ${REGION}

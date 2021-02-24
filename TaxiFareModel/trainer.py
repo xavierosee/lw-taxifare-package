@@ -11,10 +11,7 @@ import mlflow
 from mlflow.tracking import MlflowClient
 from memoized_property import memoized_property
 import joblib
-
-MLFLOW_URI = "https://mlflow.lewagon.co/"
-myname = "xavierosee"
-EXPERIMENT_NAME = f"[BE][Brussels][{myname}][TaxiFareModel]"
+from TaxiFareModel import params
 
 
 class Trainer(object):
@@ -26,7 +23,7 @@ class Trainer(object):
         self.pipeline = None
         self.X = X
         self.y = y
-        self.experiment_name = EXPERIMENT_NAME
+        self.experiment_name = params.EXPERIMENT_NAME
 
     def set_experiment_name(self, experiment_name):
         '''defines the experiment name for MLFlow'''
@@ -64,7 +61,7 @@ class Trainer(object):
     # MLFlow methods
     @memoized_property
     def mlflow_client(self):
-        mlflow.set_tracking_uri(MLFLOW_URI)
+        mlflow.set_tracking_uri(params.MLFLOW_URI)
         return MlflowClient()
 
     @memoized_property

@@ -8,3 +8,4 @@ raw_data/
 mlruns/
 .vscode/
 .pytest_cache/
+.virtual_documents/

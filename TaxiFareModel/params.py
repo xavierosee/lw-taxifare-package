@@ -1,0 +1,7 @@
+MLFLOW_URI = "https://mlflow.lewagon.co/"
+MY_NAME = "xavierosee"
+EXPERIMENT_NAME = f"[BE][Brussels][{MY_NAME}][TaxiFareModel]"
+BUCKET_NAME = "wagon-ml-xavierosee-wagon-bootcamp-675457443"
+TRAIN_DATA_PATH = "data/train_1k.csv"
+STORAGE_LOCATION = "models/taxi_fare_model"
+MODEL_VERSION = "v1"
